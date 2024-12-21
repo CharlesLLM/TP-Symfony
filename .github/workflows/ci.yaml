@@ -1,0 +1,54 @@
+on: pull_request
+
+env:
+  APP_ENV: test
+  COMPOSE: docker compose -f compose.yaml -f compose.ci.yaml
+  EXEC: docker compose -f compose.yaml -f compose.ci.yaml exec -T app
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # Lints and tfs
+  ci:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+
+      - name: SET composer cache directory
+        run: echo "COMPOSER_CACHE_DIR=$(composer config cache-files-dir)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v3
+        with:
+          path: ${{ env.COMPOSER_CACHE_DIR }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+
+      - name: Install PHP dependencies
+        run: composer install --prefer-dist
+
+      - name: Lint php
+        run: vendor/bin/php-cs-fixer fix -v --dry-run --config=.php-cs-fixer.php
+
+      - name: Lint twig
+        run: vendor/bin/twig-cs-fixer lint --config=.twig-cs-fixer.php
+
+      # Activate this tests regularly
+      # - name: Pull docker images
+      #   run: ${COMPOSE} pull
+      #
+      # - name: Execute Docker-compose
+      #   run: ${COMPOSE} up -d
+
+      - name: Patch bad permissions
+        run: |
+          sudo chown -R www-data:$USER .
+          sudo chmod -R g+rwx .

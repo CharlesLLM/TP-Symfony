@@ -1,0 +1,42 @@
+
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/config/secrets/prod/prod.decrypt.private.php
+/node_modules/
+/public/bundles/
+/var/
+/vendor/
+/public/build/
+yarn-error.log
+.yarn/cache
+.yarn/install-state.gz
+###< symfony/framework-bundle ###
+
+###> docker-compose ###
+/compose.override.yaml
+###< docker-compose ###
+
+###> friendsofphp/php-cs-fixer ###
+.php-cs-fixer.cache
+###< friendsofphp/php-cs-fixer ###
+
+###> vincentlanglet/twig-cs-fixer ###
+.twig-cs-fixer.cache
+###< vincentlanglet/twig-cs-fixer ###
+
+###> supervisor/supervisor ###
+supervisord.log
+supervisord.pid
+###< supervisor/supervisor ###
+
+###> phpunit/phpunit ###
+/phpunit.xml
+.phpunit.result.cache
+###< phpunit/phpunit ###
+
+###> symfony/asset-mapper ###
+/public/assets/
+/assets/vendor/
+###< symfony/asset-mapper ###

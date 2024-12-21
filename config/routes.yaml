@@ -1,0 +1,14 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+
+admin:
+    resource: ../src/Controller/Admin/
+    type: attribute
+    prefix: /admin
+
+user_logout:
+    path: /logout
+    methods: GET

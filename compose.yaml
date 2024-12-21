@@ -1,0 +1,63 @@
+services:
+  db:
+    image: mariadb:10.7
+    container_name: tp-db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: tp-symfony
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      interval: 10s
+      timeout: 20s
+      retries: 5
+      start_period: 60s
+
+  app:
+    container_name: tp-app
+    build:
+      context: ./
+      dockerfile: docker/Dockerfile
+      network: host
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "./:/app"
+
+  phpmyadmin:
+    container_name: tp-phpmyadmin
+    image: phpmyadmin:latest
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8080:80"
+    environment:
+      UPLOAD_LIMIT: 512M
+      MAX_EXECUTION_TIME: 300
+
+  mailcatcher:
+    container_name: tp-mailcatcher
+    image: sj26/mailcatcher:latest
+    ports:
+      - "1080:1080"
+
+  mailer:
+    container_name: tp-mailer
+    image: axllent/mailpit
+    ports:
+      - "1025"
+      - "8025"
+    environment:
+      MP_SMTP_AUTH_ACCEPT_ANY: 1
+      MP_SMTP_AUTH_ALLOW_INSECURE: 1
+
+volumes:
+  socket_dir:

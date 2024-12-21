@@ -1,0 +1,12 @@
+services:
+  app:
+    container_name: tp-app
+    environment:
+      - APP_ENV=test
+    ports:
+      - "80:80"
+      - "443:443"
+
+networks:
+  default:
+    driver: bridge
