@@ -27,10 +27,6 @@ final class CommentFixtures extends Fixture implements DependentFixtureInterface
                 ->setChapter($this->getReference(ChapterFixtures::REFERENCE_IDENTIFIER.$faker->numberBetween(1, ChapterFixtures::FIXTURE_RANGE)))
             ;
 
-            if ($i > 3) {
-                $comment->setParent($this->getReference(self::REFERENCE_IDENTIFIER.$faker->numberBetween(1, $i)));
-            }
-
             ++$i;
             $manager->persist($comment);
             $this->setReference(self::REFERENCE_IDENTIFIER.$i, $comment);

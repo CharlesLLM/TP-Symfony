@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des chapitres{% endblock %}
+
+{% block content %}
+    <section>
+        <div class="flex items-center justify-between">
+            <h1 class="text-2xl font-bold">Liste des chapitres</h1>
+            <a href="{{ path('admin_chapter_new') }}" class="form-btn bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2">Créer un chapitre</a>
+        </div>
+
+        <ul class="mt-12 grid grid-cols-2 gap-5 sm:grid-cols-3 px-12">
+            {% for chapter in chapters %}
+                <li>
+                    <a href="{{ path('admin_chapter_edit', {id: chapter.id}) }}" class="relative flex flex-col overflow-hidden aspect-square border rounded-xl hover:scale-105 transition hover:shadow-md hover:opacity-90">
+                        <img src="{{ chapter.tutorial.picture }}" class="h-4/5 object-cover w-full object-top" alt="{{ chapter.title }}">
+                        <div class="size-full bg-white px-3 flex items-center justify-between border-t-2">
+                            <span class="capitalize font-medium pr-2"><span class="font-bold">{{ chapter.title }}</span>
+                        </div>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}

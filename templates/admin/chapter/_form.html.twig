@@ -1,0 +1,46 @@
+{{ form_start(form, {attr: {class: 'border-2 border-gray-300 rounded-xl p-5'}}) }}
+    {{ form_row(form.title, {
+        attr: {class: 'border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full'},
+        label_attr: {class: 'font-semibold text-sm text-gray-600 pb-1 block'}
+    }) }}
+    {{ form_row(form.summary, {
+        attr: {class: 'border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full'},
+        label_attr: {class: 'font-semibold text-sm text-gray-600 pb-1 block'}
+    }) }}
+    {{ form_row(form.videoUrl, {
+        attr: {class: 'border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full'},
+        label_attr: {class: 'font-semibold text-sm text-gray-600 pb-1 block'}
+    }) }}
+    {{ form_row(form.tutorial, {
+        attr: {class: 'border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full'},
+        label_attr: {class: 'font-semibold text-sm text-gray-600 pb-1 block'}
+    }) }}
+
+    <h2 class="text-xl leading-none font-semibold mt-7 mb-5">Commentaires</h2>
+    <div
+        class="space-y-3"
+        data-controller="form-collection"   
+        data-form-collection-index-value="{{ form.comments|length > 0 ? form.comments|last.vars.name + 1 : 0 }}"
+        data-form-collection-prototype-value="{{ form_widget(form.comments.vars.prototype)|e('html_attr') }}"
+    >
+        <ul
+            class="space-y-5"
+            data-form-collection-target="collectionContainer"
+        >
+            {% for comment in form.comments %}
+                <li class="border border-gray-300 rounded-xl p-5">
+                    {{ form_row(comment.content) }}
+                    {{ form_row(comment.status) }}
+                </li>
+            {% endfor %}
+        </ul>
+        <button
+            type="button"
+            class="form-btn bg-blue-500 hover:bg-blue-600"
+            data-action="click->form-collection#addCollectionElement"
+        >
+            Ajouter un commentaire
+        </button>
+    </div>
+    <button class="mt-5 form-btn bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2">Sauvegarder</button>
+{{ form_end(form) }}

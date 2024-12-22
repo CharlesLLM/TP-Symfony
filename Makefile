@@ -2,9 +2,9 @@ COMPOSE=docker compose
 EXEC=$(COMPOSE) exec app
 CONSOLE=$(EXEC) php bin/console
 
-.PHONY: start up composer bash db cache stop perm php-lint twig-lint
+.PHONY: start up composer bash assets db cache stop perm php-lint twig-lint
 
-start: up composer db cache perm
+start: up composer db cache assets perm
 
 up:
 	docker kill $$(docker ps -q) || true
@@ -21,13 +21,14 @@ composer:
 bash:
 	$(EXEC) bash
 
-sh:
-	$(EXEC) $(c)
+assets:
+	rm -rf ./public/assets
+	$(CONSOLE) asset-map:compile
 
 db:
 	@$(CONSOLE) d:d:d --if-exists --force
 	@$(CONSOLE) d:d:c --if-not-exists
-	@$(CONSOLE) d:s:u --force --complete
+	@$(CONSOLE) d:m:m -n
 	@$(CONSOLE) d:f:l -n
 
 cache:

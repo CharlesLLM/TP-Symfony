@@ -4,7 +4,6 @@ namespace App\DataFixtures;
 
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -22,6 +21,7 @@ final class UserFixtures extends Fixture
     {
         $faker = Factory::create('fr_FR');
 
+        // Super admin
         $user = new User();
         $user->setUsername('superadmin')
             ->setEmail('superadmin@esgi.fr')
@@ -31,6 +31,17 @@ final class UserFixtures extends Fixture
 
         $manager->persist($user);
         $this->setReference(self::REFERENCE_IDENTIFIER.'superadmin', $user);
+
+        // Banned
+        $user = new User();
+        $user->setUsername('banned')
+            ->setEmail('banned@esgi.fr')
+            ->setPassword($this->passwordHasher->hashPassword($user, 'banned'))
+            ->setRoles(['ROLE_BANNED'])
+        ;
+
+        $manager->persist($user);
+        $this->setReference(self::REFERENCE_IDENTIFIER.'banned', $user);
 
         foreach (range(0, self::FIXTURE_RANGE - 1) as $i) {
             $isAdmin = 0 === $i;

@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des tutoriels{% endblock %}
+
+{% block content %}
+    <section>
+        <div class="flex items-center justify-between">
+            <h1 class="text-2xl font-bold">Liste des tutoriels</h1>
+            <a href="{{ path('admin_tutorial_new') }}" class="form-btn bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2">Créer un tutoriel</a>
+        </div>
+
+        <ul class="mt-12 grid grid-cols-2 gap-5 sm:grid-cols-3 px-12">
+            {% for tutorial in tutorials %}
+                <li>
+                    <a href="{{ path('admin_tutorial_edit', {id: tutorial.id}) }}" class="relative flex flex-col overflow-hidden aspect-square border rounded-xl hover:scale-105 transition hover:shadow-md hover:opacity-90">
+                        <img src="{{ tutorial.picture }}" class="h-4/5 object-cover w-full object-top" alt="{{ tutorial.name }}">
+                        <div class="size-full bg-white px-3 flex items-center justify-between border-t-2">
+                            <span class="capitalize font-medium pr-2"><span class="font-bold">{{ tutorial.name }}</span>
+                        </div>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}

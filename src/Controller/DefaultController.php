@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-final class HomeController extends AbstractController
+final class DefaultController extends AbstractController
 {
     #[Route(path: '/', name: 'app_home', methods: ['GET'])]
     public function index(): Response
@@ -22,5 +22,11 @@ final class HomeController extends AbstractController
         return $this->render('app/subject/view.html.twig', [
             'subject' => $subject,
         ]);
+    }
+
+    #[Route(path: '/banned', name: 'app_banned', methods: ['GET'])]
+    public function banned(): Response
+    {
+        return $this->render('app/banned.html.twig');
     }
 }

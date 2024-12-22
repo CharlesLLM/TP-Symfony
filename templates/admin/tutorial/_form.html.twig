@@ -1,0 +1,15 @@
+{{ form_start(form, {attr: {class: 'border-2 border-gray-300 rounded-xl p-5'}}) }}
+    {{ form_row(form.name, {
+        attr: {class: 'border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full'},
+        label_attr: {class: 'font-semibold text-sm text-gray-600 pb-1 block'}
+    }) }}
+    {{ form_row(form.picture, {
+        attr: {class: 'border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full'},
+        label_attr: {class: 'font-semibold text-sm text-gray-600 pb-1 block'}
+    }) }}
+    {{ form_row(form.subjects, {
+        attr: {class: 'border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full'},
+        label_attr: {class: 'font-semibold text-sm text-gray-600 pb-1 block'}
+    }) }}
+    <button class="form-btn bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2">Sauvegarder</button>
+{{ form_end(form) }}

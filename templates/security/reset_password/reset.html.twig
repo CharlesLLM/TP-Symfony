@@ -1,0 +1,53 @@
+{% extends 'security/layout.html.twig' %}
+
+{% block title %}Réinitialisation de mot de passe{% endblock %}
+
+{% block content %}
+    <section class="h-full relative">
+        <div class="bg-cover bg-no-repeat h-full before:bg-black/40 before:content-[''] before:top-0 before:left-0 before:right-0 before:absolute before:w-full before:h-full">
+            <div class="p-8 lg:w-1/2 mx-auto h-full flex items-center justify-center">
+                <div class="bg-white rounded-lg p-8 relative w-full">
+                    <h1 class="text-center text-lg font-bold">Mot de passe perdu ?</h1>
+                    <p class="text-center text-sm font-medium opacity-70 mt-5">Choisissez votre nouveau mot de passe</p>
+
+                    <div class="flex items-center font-medium mt-8 bg-blue-100 border border-black/10 rounded-lg px-8 py-4">
+                        Votre mot de passe doit contenir au moins 12 caractères, une majuscule, une minuscule et un chiffre.
+                    </div>
+
+                    {{ form_start(resetForm, {attr: {class: 'mt-10'}}) }}
+                        {{ form_row(resetForm.plainPassword.first, {
+                            row_attr: {
+                                class: 'relative mt-4'
+                            },
+                            attr: {
+                                class: 'w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white',
+                                placeholder: 'Nouveau mot de passe'
+                            }
+                        }) }}
+                        {{ form_row(resetForm.plainPassword.second, {
+                            row_attr: {
+                                class: 'relative mt-4'
+                            },
+                            attr: {
+                                class: 'w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white',
+                                placeholder: 'Confirmer le mot de passe'
+                            }
+                        }) }}
+                        <div class="flex items-center justify-center mt-8">
+                            <button class="relative flex w-full bg-blue-600 flex-row p-3 items-center justify-center rounded-lg overflow-hidden border cursor-pointer transition text-white">
+                                <svg class="h-5 w-5 fill-current mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>check-circle</title><path d="M12 2C6.5 2 2 6.5 2 12S6.5 22 12 22 22 17.5 22 12 17.5 2 12 2M10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z" /></svg>
+                                Changer mon mot de passe
+                            </button>
+                        </div>
+
+                        <div class="flex items-center justify-center mt-8">
+                            <a href="{{ path('app_login') }}" class="text-blue-600 cursor-pointer transition">
+                                Vous vous souvenez de votre mot de passe ? Connectez-vous
+                            </a>
+                        </div>
+                    {{ form_end(resetForm) }}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

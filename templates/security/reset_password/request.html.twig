@@ -1,0 +1,36 @@
+{% extends 'security/layout.html.twig' %}
+
+{% block title %}Demande de réinitialisation de mot de passe{% endblock %}
+
+{% block content %}
+    <section class="h-full relative">
+        <div class="p-8 lg:w-1/2 mx-auto h-full flex items-center justify-center">
+            <div class="bg-white rounded-lg p-8 relative w-full border-2 border-gray-200 rounded-lg">
+                <h1 class="text-center text-lg font-bold">Mot de passe perdu ?</h1>
+                <p class="text-center text-sm font-medium opacity-70 mt-5">Vous recevez un email pour réinitialiser votre mot de passe</p>
+                {{ form_start(requestForm, {attr: {class: 'mt-10'}}) }}
+                    {{ form_row(requestForm.email, {
+                        row_attr: {
+                            class: 'relative'
+                        },
+                        attr: {
+                            class: 'w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white',
+                            placeholder: 'Adresse Email'
+                        }
+                    }) }}
+                    <div class="flex items-center justify-center mt-8">
+                        <button class="relative flex w-full bg-blue-600 flex-row p-3 items-center justify-center rounded-lg overflow-hidden border cursor-pointer transition text-white hover:bg-blue-700">
+                            Envoyer
+                        </button>
+                    </div>
+
+                    <div class="flex items-center justify-center mt-16">
+                        <a href="{{ path('app_login') }}" class="text-blue-600 cursor-pointer transition hover:text-blue-700">
+                            Vous vous souvenez de votre mot de passe ? Connectez-vous
+                        </a>
+                    </div>
+                {{ form_end(requestForm) }}
+            </div>
+        </div>
+    </section>
+{% endblock %}
