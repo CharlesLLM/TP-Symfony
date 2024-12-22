@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ tutorial.name }}{% endblock %}
+
+{% block content %}
+    <header class="flex items-center gap-3 mb-5">
+        <img src="{{ tutorial.picture }}" class="size-12 object-cover rounded-lg object-top" alt="{{ tutorial.name }}">
+        <h1 class="text-2xl leading-none font-bold">{{ tutorial.name }}</h1>
+    </header>
+
+    {{ include('admin/tutorial/_form.html.twig') }}
+
+    <div class="flex justify-between mt-5">
+        <a href="{{ path('admin_tutorial_index') }}" class="form-btn bg-gray-400 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2">Retour</a>
+        {{ include('admin/tutorial/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

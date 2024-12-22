@@ -25,11 +25,14 @@ class Tutorial
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $picture = null;
+
     #[ORM\ManyToOne(targetEntity: User::class)]
     #[Gedmo\Blameable(on: 'create')]
     private ?User $createdBy = null;
 
-    #[ORM\ManyToMany(targetEntity: Subject::class, inversedBy: 'chapters')]
+    #[ORM\ManyToMany(targetEntity: Subject::class, inversedBy: 'tutorials')]
     private Collection $subjects;
 
     #[ORM\OneToMany(mappedBy: 'tutorial', targetEntity: Chapter::class, orphanRemoval: true)]
@@ -54,6 +57,18 @@ class Tutorial
     public function setName(?string $name): static
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getPicture(): ?string
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(?string $picture): static
+    {
+        $this->picture = $picture;
 
         return $this;
     }

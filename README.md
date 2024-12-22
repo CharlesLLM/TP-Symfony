@@ -34,21 +34,21 @@ Your project is now set up and ready to go!
 - PhpMyAdmin: [localhost:8080](http://localhost:8080) (user: `admin`, password: `admin`)
 - Mailcatcher: [localhost:1080](http://localhost:1080)
 
-| Command                    | Description                      |
-| -------------------------- | -------------------------------- |
-| make start                 | Start the project                |
-| make stop                  | Stop all containers              |
-| make bash                  | Connect to app container bash    |
-| make sh c='<bash_command>' | Run any bash command             |
-| make db                    | Init database with data fixtures |
-| make cache                 | Clear cache                      |
-| make perm                  | Set permissions                  |
-| make composer              | Install dependencies             |
+| Command       | Description                      |
+| ------------- | -------------------------------- |
+| make start    | Start the project                |
+| make stop     | Stop all containers              |
+| make bash     | Connect to app container bash    |
+| make css      | Compile css assets               |
+| make db       | Init database with data fixtures |
+| make cache    | Clear cache                      |
+| make perm     | Set permissions                  |
+| make composer | Install dependencies             |
 
 ## Users
 
-| Login        | Password     | Roles                                                           |
-| ------------ | ------------ | --------------------------------------------------------------- |
-| `superadmin` | `superadmin` | ROLE_SUPER_ADMIN, ROLE_ALLOWED_TO_SWITCH, ROLE_ADMIN, ROLE_USER |
-| `admin`      | `admin`      | ROLE_ADMIN                                                      |
-| `user{1..5}` | `user`       | ROLE_USER                                                       |
+| Login        | Password     | Roles            |
+| ------------ | ------------ | ---------------- |
+| `superadmin` | `superadmin` | ROLE_SUPER_ADMIN |
+| `admin`      | `admin`      | ROLE_ADMIN       |
+| `user{1..5}` | `user`       | ROLE_USER        |

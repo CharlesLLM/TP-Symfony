@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="flex min-h-screen">
+        {{ include('app/layout/left-menu.html.twig') }}
+
+        <main class="flex-1">
+            <div class="pt-5 px-5 md:px-10 md:pt-0">
+                {{ include('app/layout/header.html.twig') }}
+            </div>
+
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+{% endblock %}

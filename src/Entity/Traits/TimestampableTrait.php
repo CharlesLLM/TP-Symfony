@@ -21,7 +21,7 @@ trait TimestampableTrait
         return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeInterface $createdAt): static
+    public function setCreatedAt(?\DateTimeInterface $createdAt): static
     {
         $this->createdAt = $createdAt;
 
@@ -33,7 +33,7 @@ trait TimestampableTrait
         return $this->updatedAt;
     }
 
-    public function setUpdatedAt(\DateTimeInterface $updatedAt): static
+    public function setUpdatedAt(?\DateTimeInterface $updatedAt): static
     {
         $this->updatedAt = $updatedAt;
 

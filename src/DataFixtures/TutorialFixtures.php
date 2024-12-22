@@ -21,6 +21,7 @@ final class TutorialFixtures extends Fixture implements DependentFixtureInterfac
             $tutorial = new Tutorial();
             $tutorial
                 ->setName($faker->unique()->word())
+                ->setPicture('https://picsum.photos/310/420')
                 ->setCreatedBy($this->getReference(UserFixtures::REFERENCE_IDENTIFIER.'superadmin'))
                 ->setCreatedAt($faker->dateTimeBetween('-1 years', 'now'));
 
