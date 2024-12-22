@@ -4,7 +4,7 @@
 
 {% block content %}
     <section class="h-full flex items-center justify-center">
-        <div class="p-8 lg:w-1/2 mx-auto flex items-center justify-center border-2 border-gray-200">
+        <div class="p-6 lg:w-1/2 mx-auto flex items-center justify-center border-2 border-gray-200 rounded-lg">
             <div class="bg-white rounded-lg p-8 relative size-full">
                 <h1 class="text-center text-lg font-bold">Connexion</h1>
                 {% if app.user %}
@@ -22,7 +22,7 @@
                             </button>
                         </div>
                         {% if error %}
-                            <div class="text-blue-700">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                            <div class="text-red-700">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                         {% endif %}
                         <div class="flex items-center justify-center mt-8">
                             <button type="submit" class="relative flex w-full bg-blue-600 flex-row p-3 items-center justify-center rounded-lg overflow-hidden border cursor-pointer transition text-white">
@@ -31,7 +31,7 @@
                             </button>
                         </div>
 
-                        <div class="flex items-center justify-center mt-16">
+                        <div class="flex items-center justify-center mt-10">
                             <a href="{{ path('app_forgot_password_request') }}" class="text-blue-600 cursor-pointer transition hover:text-blue-700 hover:scale-105">Mot de passe oublié ?</a>
                         </div>
                     </form>
