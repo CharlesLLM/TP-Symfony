@@ -33,7 +33,7 @@ class Chapter
     #[ORM\JoinColumn(nullable: false)]
     private ?Tutorial $tutorial = null;
 
-    #[ORM\OneToMany(mappedBy: 'chapter', targetEntity: Comment::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'chapter', targetEntity: Comment::class, orphanRemoval: true, cascade: ['persist', 'remove'])]
     private Collection $comments;
 
     public function __construct()

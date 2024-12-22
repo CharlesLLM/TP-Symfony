@@ -39,7 +39,7 @@ Your project is now set up and ready to go!
 | make start    | Start the project                |
 | make stop     | Stop all containers              |
 | make bash     | Connect to app container bash    |
-| make css      | Compile css assets               |
+| make assets   | Compile assets                   |
 | make db       | Init database with data fixtures |
 | make cache    | Clear cache                      |
 | make perm     | Set permissions                  |

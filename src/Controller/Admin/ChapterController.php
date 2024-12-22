@@ -30,6 +30,11 @@ final class ChapterController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            foreach ($chapter->getComments() as $comment) {
+                $comment->setChapter($chapter);
+                $comment->setAuthor($this->getUser());
+            }
+
             $entityManager->persist($chapter);
             $entityManager->flush();
 
@@ -49,6 +54,10 @@ final class ChapterController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            foreach ($chapter->getComments() as $comment) {
+                $comment->setChapter($chapter);
+                $comment->setAuthor($this->getUser());
+            }
             $entityManager->flush();
 
             return $this->redirectToRoute('admin_chapter_index', [], Response::HTTP_SEE_OTHER);
