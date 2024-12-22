@@ -2,7 +2,7 @@
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <title>Streemi - {% block title %}{% endblock %}</title>
+        <title>TP Symfony - {% block title %}{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
         <script src="https://cdn.tailwindcss.com"></script>
         {% block stylesheets %}
@@ -14,7 +14,7 @@
     </head>
     <body class="font-montserrat text-sm bg-white">
         {% block body %}
-            <div class="flex min-h-screen 2xl:max-w-screen-2xl 2xl:mx-auto 2xl:border-x-2 2xl:border-gray-200">
+            <div class="flex min-h-screen">
                 {% block left_side %}
                     {{ include('app/layout/left-menu.html.twig') }}
                 {% endblock %}

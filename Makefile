@@ -28,7 +28,7 @@ css:
 db:
 	@$(CONSOLE) d:d:d --if-exists --force
 	@$(CONSOLE) d:d:c --if-not-exists
-	@$(CONSOLE) d:s:u --force --complete
+	@$(CONSOLE) d:m:m -n
 	@$(CONSOLE) d:f:l -n
 
 cache:

@@ -4,12 +4,10 @@
 
 {% block content %}
     <section class="h-full relative">
-        <div style="background-image: url('https://blog.compose.fr/wp-content/uploads/2024/05/Marathon-Cinema.webp')" class="bg-cover bg-no-repeat h-full before:bg-black/40 before:content-[''] before:top-0 before:left-0 before:right-0 before:absolute before:w-full before:h-full">
-            <div class="p-8 lg:w-1/2 mx-auto h-full flex items-center justify-center">
-                <div class="bg-white rounded-lg p-8 relative w-full">
-                    <h1 class="text-center text-lg font-bold">Email envoyé</h1>
-                    <p class="text-center text-sm font-medium opacity-70 mt-5">Si un compte correspondant à votre adresse email existe, alors un email vient d'être envoyé contenant un lien que vous pouvez utiliser pour réinitialiser votre mot de passe. Ce lien expirera dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.</p>
-                </div>
+        <div class="p-8 lg:w-1/2 mx-auto h-full flex items-center justify-center">
+            <div class="bg-white rounded-lg p-8 relative w-full">
+                <h1 class="text-center text-lg font-bold">Email envoyé</h1>
+                <p class="text-center text-sm font-medium opacity-70 mt-5">Si un compte correspondant à votre adresse email existe, alors un email vient d'être envoyé contenant un lien que vous pouvez utiliser pour réinitialiser votre mot de passe. Ce lien expirera dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.</p>
             </div>
         </div>
     </section>
