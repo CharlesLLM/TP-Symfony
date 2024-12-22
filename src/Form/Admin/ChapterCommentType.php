@@ -2,10 +2,8 @@
 
 namespace App\Form\Admin;
 
-use App\Entity\Chapter;
 use App\Entity\Comment;
 use App\Enum\CommentStatusEnum;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EnumType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;

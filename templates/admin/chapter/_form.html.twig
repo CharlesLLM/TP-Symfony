@@ -19,7 +19,7 @@
     <h2 class="text-xl leading-none font-semibold mt-7 mb-5">Commentaires</h2>
     <div
         class="space-y-3"
-        data-controller="form-collection"   
+        data-controller="form-collection"
         data-form-collection-index-value="{{ form.comments|length > 0 ? form.comments|last.vars.name + 1 : 0 }}"
         data-form-collection-prototype-value="{{ form_widget(form.comments.vars.prototype)|e('html_attr') }}"
     >
