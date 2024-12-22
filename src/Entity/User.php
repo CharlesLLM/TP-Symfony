@@ -133,11 +133,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->plainPassword = null;
     }
 
-    public function displayFullName(): string
-    {
-        return \sprintf('%s %s', $this->firstName, $this->lastName);
-    }
-
     public function getComments(): Collection
     {
         return $this->comments;
